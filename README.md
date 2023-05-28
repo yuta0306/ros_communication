@@ -97,7 +97,19 @@ docker run -it --network=host --rm osrf/ros:foxy-ros1-bridge
 
 [https://tomson784.github.io/ros_practice/ROS2/bridge_setup.html](https://tomson784.github.io/ros_practice/ROS2/bridge_setup.html)
 
-使ってみた感じ使うまでに手順が多いため，`tiryoh/openface2_ros`のように，こちらでイメージを作成するべきかと
+~~使ってみた感じ使うまでに手順が多いため，`tiryoh/openface2_ros`のように，こちらでイメージを作成するべきかと~~
+
+↑　作って公開済み
+
+```sh
+ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+```
+
+~~`--bridge-all-topics`をつければ，`openface2/*`を見つけられそう~~  
+subscriberを書けば，勝手に`openface/*`は見つかる
+
+
+ただし`openface2_ros`のコンテナにおいて，`[ERROR] [1685275601.993715180]: Compressed Depth Image Transport - Compression requires single-channel 32bit-floating point or 16bit raw depth images (input format is: rgb8).`が出てくる
 
 ### 対話モデル用環境ROS2
 
@@ -105,4 +117,11 @@ docker run -it --network=host --rm osrf/ros:foxy-ros1-bridge
 - ROS2 for Ubuntu ver（テスト時ROS2 foxy）
 
 ホストOSでテストしてみた
+
+ROS2のインストール
+
+[https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html)
+
+
+## `openface2_ros`の独自メッセージ定義 on マシン for ROS2
 

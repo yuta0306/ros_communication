@@ -28,3 +28,5 @@ RUN mkdir -p /home/ubuntu/ros1_bridge_ws/src
 WORKDIR /home/ubuntu/ros1_bridge_ws/src
 WORKDIR /home/ubuntu/ros1_bridge_ws
 RUN colcon build --symlink-install --packages-select ros1_bridge --cmake-force-configure
+
+COPY ./start.sh /home/ubuntu/

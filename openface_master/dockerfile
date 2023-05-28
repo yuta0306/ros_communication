@@ -54,10 +54,4 @@ RUN git clone https://github.com/ditoec/openface2_ros.git src/openface2_ros.git 
 # ifconfig & ping
 RUN sudo apt-get update && sudo apt-get install -y net-tools iputils-ping
 
-# # Give the authority to /dev/video0
-# RUN sudo chmod 777 /dev/video0
-
-# # Run openface2_ros
-# RUN roscore && \
-#     rosrun usb_cam usb_cam_node && \
-#     roslaunch openface2_ros openface2_ros.launch
+COPY ./start.sh /home/ubuntu/
