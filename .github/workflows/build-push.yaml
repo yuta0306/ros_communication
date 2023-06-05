@@ -21,6 +21,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ros1_bridge
+          context: openface_api_server
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ros1_bridge:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openface_server:latest
