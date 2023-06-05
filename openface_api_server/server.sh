@@ -9,8 +9,8 @@ function response() {
   GAZE_ANGLE=$(echo "${RES}" | grep -A 3 'gaze_angle');
   HEAD_POSE=$(echo "${RES}" | grep -A 9 'head_pose');
 
-  echo -e 'HTTP/1.1 200 OK\n';
-  echo -e 'Content-Type: application/json\n';
+  echo 'HTTP/1.1 200 OK';
+  echo 'Content-Type: application/json';
 
   echo '{';
   echo '  "status": 200,';
@@ -124,5 +124,5 @@ function response() {
 trap exit INT
 
 while true; do
-  response | nc -l 8080; sleep 5
+  response | nc -vlp 8080;
 done
