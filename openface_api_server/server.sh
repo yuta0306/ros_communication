@@ -124,5 +124,5 @@ function response() {
 trap exit INT
 
 while true; do
-  response | nc -l 80; sleep 5
+  response | nc -l 8080; sleep 5
 done

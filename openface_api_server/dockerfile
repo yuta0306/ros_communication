@@ -11,6 +11,7 @@ RUN echo "root:root" | chpasswd && \
 RUN apt-get update && \
     apt-get install -y libopenblas-dev unzip wget ros-melodic-usb-cam && \
     rm -rf /var/lib/apt/lists/*
+EXPOSE 8080
 
 USER ubuntu
 RUN mkdir -p /home/ubuntu/ws
