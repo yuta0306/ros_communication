@@ -69,7 +69,7 @@ function response() {
   echo '  },'
 
   # gaze_angle
-  echo '  gaze_angle: {'
+  echo '  "gaze_angle": {'
   echo -n '    "x": '
   echo "${GAZE_ANGLE}" | grep 'x' | sed -e 's/[ ]*x:[ ]//g' | sed -z 's/\n//g'
   echo ','
