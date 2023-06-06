@@ -94,7 +94,7 @@ function response() {
   echo "${HEAD_POSE}" | grep -A 3 'position' | grep 'z' | sed -e 's/[ ]*z:[ ]//g'
   echo '    },'
   # head_pose > orientation
-  echo '    "orientation": {,'
+  echo '    "orientation": {'
   echo -n '      "x": ';
   echo "${HEAD_POSE}" | grep -A 3 'orientation' | grep 'x' | sed -e 's/[ ]*x:[ ]//g' | sed -z 's/\n//g';
   echo ','
