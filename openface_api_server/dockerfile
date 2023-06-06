@@ -49,10 +49,8 @@ FROM tiryoh/openface2_ros:latest
 EXPOSE 8080
 
 USER ubuntu
-# ifconfig & ping
-RUN sudo apt-get update && sudo apt-get install -y net-tools iputils-ping
 # nc
-RUN sudo apt-get -y install netcat
+RUN sudo apt-get update && sudo apt-get -y install netcat
 
 COPY response.sh /home/ubuntu
 COPY api.py /home/ubuntu
