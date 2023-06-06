@@ -49,8 +49,11 @@ FROM tiryoh/openface2_ros:latest
 EXPOSE 8080
 
 USER ubuntu
+WORKDIR /home/ubuntu
 # nc
-RUN sudo apt-get update && sudo apt-get -y install netcat
+RUN curl http://repo.ros2.org/repos.key | sudo apt-key add -
+RUN sudo apt-get update && sudo apt-get install -y netcat
+RUN sudo apt install -y python3-pip && pip3 install flask
 
 COPY response.sh /home/ubuntu
 COPY api.py /home/ubuntu
