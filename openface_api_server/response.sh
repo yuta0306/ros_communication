@@ -8,6 +8,7 @@ function response() {
   RIGHT_GAZE=$(echo "${RES}" | grep -A 9 'right_gaze');
   GAZE_ANGLE=$(echo "${RES}" | grep -A 3 'gaze_angle');
   HEAD_POSE=$(echo "${RES}" | grep -A 9 'head_pose');
+  ACTION_UNITS=$(echo "${RES}" | grep -A 100 'action_units')
 
   echo '{';
   # left_gaze
@@ -107,6 +108,45 @@ function response() {
   echo -n '      "w": '
   echo "${HEAD_POSE}" | grep -A 4 'orientation' | grep 'w' | sed -e 's/[ ]*w:[ ]//g'
   echo '    }'
+  echo '  },'
+
+  units=(
+    "AU01"
+    "AU02"
+    "AU04"
+    "AU05"
+    "AU06"
+    "AU07"
+    "AU09"
+    "AU10"
+    "AU12"
+    "AU14"
+    "AU15"
+    "AU17"
+    "AU20"
+    "AU23"
+    "AU25"
+    "AU26"
+    "AU28"
+    "AU45"
+  )
+
+  # action units
+  echo '  "action_units": {'
+  for item in "${units[@]}"; do
+  echo "    \"${item}\": {"
+  echo -n '      "presence": '
+  echo -n "${ACTION_UNITS}" | grep A -2 "${item}" | grep 'presence' | sed -e 's/[ ]*presence:[ ]//g' | sed -z 's/\n//g'
+  echo ','
+  echo -n '      "intensity": '
+  echo "${ACTION_UNITS}" | grep A -2 "${item}" | grep 'intensity' | sed -e 's/[ ]*intensity:[ ]//g' | sed -z 's/\n//g'      
+  echo ''
+  echo -n '    }'
+  if [ $item != 'AU45' ]; then
+  echo ','
+  else
+  echo ''
+  fi
   echo '  }'
  
   echo '}';
